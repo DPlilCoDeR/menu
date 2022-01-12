@@ -1,7 +1,9 @@
 import React from 'react';
 
-const Categories = () => {
-  return <h2>categories component</h2>;
+const Categories = ({setCategories}) => {
+  return <section>
+    <button onClick={() => setCategories('breakfast')}>Breakfast</button>
+  </section>;
 };
 
 export default Categories;

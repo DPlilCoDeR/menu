@@ -4,7 +4,20 @@ import Categories from './components/Categories';
 import items from './data';
 
 function App() {
-  const [eats, setEats] = useState(items)
+  const [food, setFood] = useState(items)
+  const [categories, setCategories] = useState('')
+  console.log(categories)
+
+  return (
+    <main>
+      <Categories callback={setCategories}/>
+      {food.map(food => (
+            <Menu key={food.id} item={food}/>
+          )
+        )
+      }
+    </main>
+  )
 }
 
 export default App;
