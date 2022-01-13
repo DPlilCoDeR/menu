@@ -5,7 +5,6 @@ import items from './data';
 
 
 const allCategories = ['all', ...new Set(items.map( (item) => item.category))];
-console.log(allCategories)
 
 
 function App() {
@@ -23,13 +22,24 @@ function App() {
 
   return (
     <main>
-      <Categories categories={categories} callback={filterMenu}/>
-      {
-        menuItems.map(item => {
-            return <Menu key={item.id} item={item}/>
-          }
-        )
-      }
+      <section className='menu section'>
+        <div>
+          <h2 className='title'>
+            Our Menu
+          </h2>
+          <div className='underline'></div>
+        </div>
+        <Categories categories={categories} callback={filterMenu}/>
+        <div className='section-center'>
+        {
+          menuItems.map(item => {
+              return <Menu key={item.id} item={item}/>
+            }
+          )
+        }
+        </div>
+        
+      </section>
     </main>
   )
 }

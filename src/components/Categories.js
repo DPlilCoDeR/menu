@@ -2,11 +2,11 @@ import React from 'react';
 
 const Categories = ({categories, callback}) => {
   return (
-    <section>
+    <div className='btn-container'>
       {categories.map(
-        category => <button key={category} onClick={() => callback(category)}>{category}</button>
+        category => <button className='filter-btn' key={category} onClick={() => callback(category)}>{category}</button>
       )}
-    </section>
+    </div>
   )
 };
 

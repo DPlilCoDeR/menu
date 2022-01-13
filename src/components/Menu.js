@@ -4,11 +4,15 @@ const Menu = ({item}) => {
   const {title, desc, img, price} = item
 
   return (
-    <article>
-      <h3>{title}</h3>
-      <img src={img}/>
-      <p>{price}</p>
-      <p>{desc}</p>
+    <article className='menu-item'>
+      <img src={img} alt={title} className='photo'/>
+      <div className='item-info'>
+        <header>
+          <h4>{title}</h4>
+          <h4 className='price'>${price}</h4>
+        </header>
+        <p className='item-text'>{desc}</p>
+      </div>
     </article>
   );
 };
