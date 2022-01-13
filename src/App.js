@@ -1,26 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Menu from './components/Menu';
 import Categories from './components/Categories';
 import items from './data';
 
-function App() {
-  const [food, setFood] = useState(items)
-  const [categories, setCategories] = useState('lunch')
 
-  const filterMenu = () => {
-    console.log(categories);
-    const filterFood = food.filter( food => food.category === categories)
-    setFood(filterFood);
+const allCategories = ['all', ...new Set(items.map( (item) => item.category))];
+console.log(allCategories)
+
+
+function App() {
+  const [menuItems, setMenuItems] = useState(items)
+  const [categories, setCategories] = useState(allCategories)
+
+  const filterMenu = (category) => {
+    if (category === 'all') {
+      return setMenuItems(items)
+    }
+    const filterFood = items.filter( item => item.category === category)
+    setMenuItems(filterFood);
   }
 
-  useEffect(() => filterMenu(), [categories])
 
   return (
     <main>
-      <Categories callback={setCategories}/>
+      <Categories callback={filterMenu}/>
       {
-        food.map(eat => {
-            return <Menu key={eat.id} item={eat}/>
+        menuItems.map(item => {
+            return <Menu key={item.id} item={item}/>
           }
         )
       }
