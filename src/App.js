@@ -23,7 +23,7 @@ function App() {
 
   return (
     <main>
-      <Categories callback={filterMenu}/>
+      <Categories categories={categories} callback={filterMenu}/>
       {
         menuItems.map(item => {
             return <Menu key={item.id} item={item}/>
