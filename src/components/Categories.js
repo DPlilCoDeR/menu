@@ -1,12 +1,11 @@
 import React from 'react';
 
-const Categories = ({callback}) => {
+const Categories = ({categories, callback}) => {
   return (
     <section>
-      <button onClick={() => callback('breakfast')}>Breakfast</button>
-      <button onClick={() => callback('lunch')}>lunch</button>
-      <button onClick={() => callback('shakes')}>shakes</button>
-
+      {categories.map(
+        category => <button key={category} onClick={() => callback(category)}>{category}</button>
+      )}
     </section>
   )
 };
